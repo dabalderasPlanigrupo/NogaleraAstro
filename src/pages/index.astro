@@ -13,20 +13,20 @@ import Nosotros from '@components/sections/Nosotros.astro';
   <main>
     <Hero />
 
-    <Events
-      class='relative pt-16 pb-12 md:pt-32 md:pb-16 lg:pt-40 lg:pb-28'
-      events={events}
-      title='Eventos'
-      buttonLink='/eventos'
-      buttonText='Ver Eventos'
-    />
-
     <Stores
       title='Nuestras Tiendas'
       stores={stores}
       class='pt-16 pb-12 md:pt-32 md:pb-16 lg:pt-24 lg:pb-24'
       buttonLink='/tiendas'
       buttonText='Ver Tiendas'
+    />
+
+    <Events
+      class='relative pt-16 pb-12 md:pt-32 md:pb-16 lg:pt-40 lg:pb-28'
+      events={events}
+      title='Eventos'
+      buttonLink='/eventos'
+      buttonText='Ver Eventos'
     />
 
     <Nosotros class='py-12 md:py-16 lg:py-28' images={Images} />

@@ -24,7 +24,8 @@ export default {
         accent: '#969696',
       },
       fontFamily: {
-        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        title: ['Oswald', 'sans-serif'],
       },
     },
   },

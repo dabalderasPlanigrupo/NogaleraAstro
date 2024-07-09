@@ -28,12 +28,12 @@ const DirectorioItem = ({
       />
       <div className='absolute inset-0 flex flex-col justify-between items-start'>
         <span
-          className={`py-2 px-4 mt-4 ml-auto text-sm font-semibold rounded-s-md text-black bg-gray-200`}
+          className={`py-2 px-4 mt-4 ml-auto text-sm font-semibold text-black bg-gray-200`}
         >
           {title}
         </span>
         <p
-          className={`py-2 px-4 mb-4 mr-4 text-sm text-white opacity-0 transition-all font-semibold rounded-e-md group-hover:opacity-100 ${color}`}
+          className={`py-2 px-4 mb-4 mr-4 text-sm text-white opacity-0 transition-all font-semibold  group-hover:opacity-100 ${color}`}
           dangerouslySetInnerHTML={{ __html: horario }}
         ></p>
       </div>
