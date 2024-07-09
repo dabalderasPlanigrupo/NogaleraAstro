@@ -3,31 +3,41 @@ import RightElement from '@components/common/RightElement.astro';
 import { Image } from 'astro:assets';
 import Text from '@images/hero-text.png';
 import Button from '@components/common/Button.astro';
+import Hero1 from '@images/TEST-Hero-1.jpg';
+import Hero2 from '@images/TEST-Hero-2.jpg';
 ---
 
-<section class='hero pt-32 pb-16 md:py-72 px-8 relative text-white'>
-  <!-- overlay color secondary -->
+<section class='hero pt-32 pb-16 md:pt-56 md:pb-20 px-8 relative text-black'>
   <div
-    class='absolute inset-0 bg-gradient-to-b from-primary to-secondary mix-blend-multiply'
+    class='flex inset-0 justify-center items-center absolute overflow-hidden'
   >
+    <Image
+      src={Hero1}
+      width={500}
+      alt=''
+      class='w-48 -translate-x-40 -translate-y-16 md:w-auto md:-translate-x-[400px] md:-translate-y-36 -rotate-2'
+    />
+    <Image
+      src={Hero2}
+      width={500}
+      alt=''
+      class='w-48 translate-x-40 translate-y-16 md:w-auto md:translate-x-[400px] md:translate-y-36 rotate-3'
+    />
   </div>
-  <div class='relative z-10 container p-0 flex flex-col items-start gap-8'>
+  <div
+    class='relative z-10 container p-0 flex flex-col items-center text-center gap-8'
+  >
     <h1 class='text-6xl md:text-9xl font-title uppercase'>
-      Un Lugar <strong class='block'>Especial</strong>
+      <span class='block'> Un Lugar </span>
+      <strong
+        class='inline-block bg-gradient-to-r from-secondary via-primary to-secondary text-transparent bg-clip-text'
+        >Especial</strong
+      >
     </h1>
     <p class='md:text-2xl font-body max-w-[50ch]'>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
     </p>
-    <Button variant='white' href='/'>Conoce más</Button>
+    <Button variant='secondary' href='/'>Conoce más</Button>
   </div>
 </section>
-
-<style>
-  .hero {
-    background-image: url('../../images/TEST-bg-hero.jpg');
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-  }
-</style>

@@ -1,24 +1,19 @@
 ---
 import Layout from 'src/layouts/Layout.astro';
 import PageHero from '@components/common/PageHero.astro';
-import { events } from 'src/data/events.js';
-import ImageItem from '@components/common/ImageItem.astro';
 import ImageGrid from '@components/common/ImagesGrid.astro';
+
+/* importing all images from the events folder */
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/events/*.{jpeg,jpg,png,gif}'
+);
 ---
 
 <Layout title='Eventos'>
   <PageHero title='Eventos' />
   <section>
-    <ImageGrid enableThreeColumns>
-      {
-        events.map((event) => (
-          <ImageItem
-            imagePath={event.imagePath}
-            title={event.title}
-            type='events'
-          />
-        ))
-      }
-    </ImageGrid>
+    <div class='container'>
+      <ImageGrid images={images} enableThreeColumns />
+    </div>
   </section>
 </Layout>

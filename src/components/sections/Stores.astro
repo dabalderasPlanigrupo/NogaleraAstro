@@ -5,7 +5,7 @@ import CarouselSlide from '@components/common/CarouselSlide.astro';
 import TitleDivider from '@components/common/TitleDivider.astro';
 import background from '@images/bg-shops.png';
 import type { Store } from 'src/data/stores';
-import { getImage } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 
 interface Props {
   class?: string;
@@ -22,20 +22,85 @@ const {
   buttonText,
 } = Astro.props;
 
+const firstHalf = stores.slice(0, stores.length / 2);
+const secondHalf = stores.slice(stores.length / 2);
+
 const optimizedBackgroundImage = await getImage({ src: background });
 ---
 
-<section
-  class:list={[className]}
-  style=`background-image: url("${optimizedBackgroundImage.src}")`
->
-  <div class='container'>
-    <!-- {
-      stores.length > 0 && (
-        <div class='bg-white mb-8 px-8 py-4'>
-          <Carousel items={stores} type='stores' />
-        </div>
-      )
-    } -->
+<section class:list={[className]} class='max-w-full overflow-hidden'>
+  <div class='scroll-container py-8'>
+    <div class='scroller flex'>
+      {
+        firstHalf.map((store) => (
+          <div class='item bg-white flex justify-center items-center ml-8'>
+            <Image
+              width={160}
+              height={160}
+              src={`/src/images/stores/${store.imagePath}`}
+              alt=''
+              loading='eager'
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class='scroll-container-second pb-8'>
+    <div class='scroller flex'>
+      {
+        secondHalf.map((store) => (
+          <div class='item bg-white flex justify-center  items-center ml-8'>
+            <Image
+              width={160}
+              height={160}
+              src={`/src/images/stores/${store.imagePath}`}
+              alt=''
+              loading='eager'
+            />
+          </div>
+        ))
+      }
+    </div>
   </div>
 </section>
+
+<style>
+  .item {
+    --slide-items: 4;
+
+    flex: 0 0 calc(100% / var(--slide-items));
+    min-width: 0;
+
+    @media (width >=768px) {
+      --slide-items: 6;
+    }
+
+    @media (width >= 1024px) {
+      --slide-items: 8;
+    }
+  }
+</style>
+
+<script>
+  import EmblaCarousel, { type EmblaOptionsType } from 'embla-carousel';
+  import AutoScroll from 'embla-carousel-auto-scroll';
+
+  const OPTIONS: EmblaOptionsType = {
+    align: 'center',
+    loop: true,
+    watchDrag: false,
+  };
+
+  const firstHalf = document.querySelector('.scroll-container');
+  const secondHalf = document.querySelector('.scroll-container-second');
+
+  EmblaCarousel(firstHalf as HTMLElement, OPTIONS, [
+    AutoScroll({ startDelay: 0, speed: 1 }),
+  ]);
+
+  EmblaCarousel(secondHalf as HTMLElement, OPTIONS, [
+    AutoScroll({ startDelay: 0, direction: 'backward', speed: 1 }),
+  ]);
+</script>

@@ -13,7 +13,7 @@ const gridCols = enableThreeColumns
   : 'grid-cols-2 md:grid-cols-2';
 ---
 
-<div class={`grid ${gridCols} ${className}`}>
+<div class={`grid gap-4 ${gridCols} ${className}`}>
   {
     Object.keys(images).map((image: any) => (
       <Image
