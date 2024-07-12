@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// Definimos la interfaz de Props para el componente ToggleButton
 interface ToggleButtonProps {
   labelOn: string;
   labelOff: string;
@@ -11,7 +10,6 @@ interface ToggleButtonProps {
   onToggleOff?: () => void;
 }
 
-// Creamos el componente ToggleButton
 const ToggleButton: React.FC<ToggleButtonProps> = ({
   labelOn,
   labelOff,
@@ -39,7 +37,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
   return (
     <button
       onClick={handleToggle}
-      className={`cursor-pointer uppercase transition-colors border-2 py-2 px-8 text-white font-semibold no-underline focus:outline-none inline-block ${className} ${
+      className={`w-full cursor-pointer uppercase transition-colors border-2 py-2 px-8 text-white font-semibold no-underline focus:outline-none inline-block sm:w-auto ${className} ${
         isToggled
           ? 'bg-primary border-primary hover:bg-transparent hover:text-primary'
           : 'bg-secondary border-secondary hover:bg-transparent hover:text-secondary'

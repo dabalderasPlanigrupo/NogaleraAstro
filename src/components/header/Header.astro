@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Logo from '@images/logo.png';
+import MenuItem from './MenuItem.astro';
 ---
 
 <nav
@@ -31,38 +32,17 @@ import Logo from '@images/logo.png';
     class='flex flex-col gap-4 translate-x-full transition-transform ease-in-out bg-black text-white fixed inset-0 p-8 justify-center text-3xl font-bold uppercase
           md:bg-transparent md:relative md:translate-x-0 md:gap-8 md:items-center md:flex-row md:text-base md:p-0 md:font-medium md:normal-case'
   >
-    <li>
-      <a href='/directorio' class='transition-colors hover:text-primary'
-        >Directorio</a
-      >
-    </li>
-    <li>
-      <a href='/eventos' class='transition-colors hover:text-primary'>Eventos</a
-      >
-    </li>
+    <MenuItem href='/directorio'>Directorio</MenuItem>
+    <MenuItem href='/eventos'>Eventos</MenuItem>
     <li class='hidden
-              md:block'>
+    md:block'>
       <a href='/'>
         <Image width='125' height='100' src={Logo} alt='Logo' />
       </a>
     </li>
-    <li>
-      <a href='/promociones' class='transition-colors hover:text-primary'
-        >Promociones</a
-      >
-    </li>
-    <li>
-      <a href='#footer' class='transition-colors hover:text-primary'>Contacto</a
-      >
-    </li>
+    <MenuItem href='/promociones'>Promociones</MenuItem>
+    <MenuItem href='#footer'>Contacto</MenuItem>
   </ul>
 </nav>
 
-<script>
-  const hamburger = document.getElementById('hamburger') as HTMLButtonElement;
-  const menu = document.getElementById('menu') as HTMLUListElement;
-
-  hamburger.addEventListener('click', () => {
-    menu.classList.toggle('translate-x-full');
-  });
-</script>
+<script src='./toggleMenu.ts'></script>

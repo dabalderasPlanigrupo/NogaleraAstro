@@ -1,11 +1,10 @@
 ---
 import Button from '@components/common/Button.astro';
-import Carousel from '@components/common/Carousel.astro';
-import CarouselSlide from '@components/common/CarouselSlide.astro';
 import TitleDivider from '@components/common/TitleDivider.astro';
 import background from '@images/bg-shops.png';
 import type { Store } from 'src/data/stores';
 import { getImage } from 'astro:assets';
+import Carousel from './elements/carousel/Carousel.astro';
 
 interface Props {
   class?: string;

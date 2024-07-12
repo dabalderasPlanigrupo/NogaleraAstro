@@ -1,0 +1,24 @@
+---
+import type { Store } from 'src/data/stores';
+import CarouselSlide from '../carousel/CarouselSlide.astro';
+import type { Event } from 'src/data/events';
+
+interface Props {
+  class?: string;
+  items: Event[] | Store[];
+  type: 'events' | 'stores';
+}
+const { class: className, items, type } = Astro.props;
+---
+
+<div class:list={[className]} class='carousel overflow-hidden'>
+  <div class='flex -ml-4 items-center'>
+    {
+      items.map(({ imagePath, alt }) => (
+        <CarouselSlide imageUrl={imagePath} type={type} alt={alt} />
+      ))
+    }
+  </div>
+</div>
+
+<script src='./initCarousel.ts'></script>
