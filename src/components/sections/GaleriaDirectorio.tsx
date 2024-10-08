@@ -108,14 +108,14 @@ const GaleriaDirectorio: React.FC<Props> = ({ className, stores }) => {
         <div className='flex flex-col justify-end sm:flex-row items-center mb-12 gap-4'>
           {/* TOGGLE */}
           <div className='relative flex-none md:order-1'>
-            <ToggleButton
+            {/*<ToggleButton
               labelOn='Mapa'
               labelOff='Tiendas'
               propOn='primary'
               propOff='secondary'
               onToggleOn={handleOnFunction}
               onToggleOff={handleOffFunction}
-            />
+            />*/}
           </div>
           {/* SEARCH */}
           {viewMode === 'tiendas' && (
